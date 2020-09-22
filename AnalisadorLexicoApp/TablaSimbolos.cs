@@ -39,19 +39,19 @@ namespace AnalisadorLexicoApp
                 MessageBox.Show("Error, ningun dato puede quedar vacio");
                 return;
             }
-            TablaSimbolosC.AgregarSimbolo(txtSimbolo.Text, txtTipoInicial.Text);
+            Boolean seCreo=TablaSimbolosC.AgregarSimbolo(txtSimbolo.Text, txtTipoInicial.Text);
+            if (seCreo == false) 
+            {
+                MessageBox.Show("Simbolo Repetido");
+                return;
+            }
             txtSimbolo.Text = "";
             txtTipoInicial.Text = "";
             int n = dtgvConfiguracionSimbolos.Rows.Add();
-            if (TablaSimbolosC.simbolos[n].Length == 1)
-            {
-                dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = (int)TablaSimbolosC.simbolos[n][0];
-            }
-            else
-            {
-                dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = TablaSimbolosC.simbolos[n];
-            }
-            dtgvConfiguracionSimbolos.Rows[n].Cells[1].Value = TablaSimbolosC.tipos[n][0];
+            int nSimbolo = n + 3;
+
+                dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = TablaSimbolosC.simbolos[nSimbolo];
+            dtgvConfiguracionSimbolos.Rows[n].Cells[1].Value = TablaSimbolosC.tipos[nSimbolo][0];
             dtgvConfiguracionSimbolos.Rows[n].Cells[2].Value = "Editar";
             dtgvConfiguracionSimbolos.Rows[n].Cells[3].Value = "Eliminar";
         }
@@ -67,14 +67,8 @@ namespace AnalisadorLexicoApp
             for (int i = 3; i < TablaSimbolosC.simbolos.Count; i++)
             {
                 int n = dtgvConfiguracionSimbolos.Rows.Add();
-                if (TablaSimbolosC.simbolos[i].Length == 1)
-                {
-                    dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = (int)TablaSimbolosC.simbolos[i][0];
-                }
-                else
-                {
+
                     dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = TablaSimbolosC.simbolos[i];
-                }
 
                 string simbolo = TablaSimbolosC.tipos[i][0];
                 for (int j = 1; j < TablaSimbolosC.tipos[i].Count; j++)
@@ -95,8 +89,7 @@ namespace AnalisadorLexicoApp
                 return;
             }
             TablaSimbolosC.AgregarSimbolo("boolean", "Tipo de dato");
-            TablaSimbolosC.AgregarSimbolo("=", "operador");
-            TablaSimbolosC.AgregarTipoASimbolo("=", "separador");
+            TablaSimbolosC.AgregarSimbolo("=", "separador");
             TablaSimbolosC.AgregarSimbolo("(", "separador");
             TablaSimbolosC.AgregarSimbolo(")", "separador");
             TablaSimbolosC.AgregarSimbolo("{", "separador");

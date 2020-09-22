@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AnalizadorLexico
@@ -27,6 +28,15 @@ namespace AnalizadorLexico
             }
             leer.Close();
             arregloTexto = lista;
+        }
+
+        public static Queue<char[]> getArreglo() 
+        {
+            return arregloTexto;
+        }
+        public static void setArreglo(Queue<char[]> arreglo)
+        {
+            arregloTexto = arreglo;
         }
 
 

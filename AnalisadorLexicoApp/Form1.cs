@@ -78,7 +78,6 @@ namespace AnalisadorLexicoApp
                 }
                 dtgvSimbolos.Rows[n].Cells[2].Value = simbolo;
             }
-            Analizador.imprimirTabla();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

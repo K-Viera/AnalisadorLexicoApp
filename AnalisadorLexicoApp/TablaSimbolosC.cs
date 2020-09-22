@@ -31,7 +31,7 @@ namespace AnalizadorLexico
                 tipos.Add(tipoTemporal);
             }
         }
-        public static void AgregarSimbolo(string simbolo,string tipo)
+        public static Boolean AgregarSimbolo(string simbolo,string tipo)
         {
             if (!simbolos.Contains(simbolo))
             {
@@ -39,7 +39,9 @@ namespace AnalizadorLexico
                 List<string> tipoTemporal = new List<string>();
                 tipoTemporal.Add(tipo);
                 tipos.Add(tipoTemporal);
+                return true;
             }
+            return false;
         }
 
         public static void AgregarTipoASimbolo(string simbolo, string tipo)

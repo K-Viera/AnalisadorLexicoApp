@@ -16,7 +16,6 @@ namespace AnalisadorLexicoApp
         static void Main()
         {
             TablaSimbolosC.CarcarModuloPorDefecto();
-            
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace AnalizadorLexico
 {
     class Analizador
     {
-        public static List<string> simbolos = new List<string>();
-        public static List<string> ubicaciones = new List<string>();
-        public static List<List<string>> tipos = new List<List<string>>();
+        public static List<string> simbolos;
+        public static List<string> ubicaciones ;
+        public static List<List<string>> tipos ;
 
         public static void AnalizarCompleto() 
         {
-            int indiceFilaActual = 0;
+         Queue<char[]> temp = new Queue<char[]>(IngresarTexto.arregloTexto);
+         simbolos = new List<string>();
+         ubicaciones = new List<string>();
+         tipos = new List<List<string>>();
+        int indiceFilaActual = 0;
             Boolean primerSeparador = false;
             Boolean segundoSeparador = false;
             
@@ -84,7 +90,7 @@ namespace AnalizadorLexico
                                             operadorFinalTamaño = TablaSimbolosC.simbolos[indexSimbolosCoincidencias[0]].Length;
                                             ubicaciones.Add(indiceFilaActual + "," + posicionCaracterFilaActual + " - " + indiceFilaActual + "," + posicionFinal);
                                             tipos.Add(TablaSimbolosC.tipos[indexSimbolosCoincidencias[0]]);
-                                            posicionSeparadorFinal = posicionCaracterFilaActual + 1;
+                                            posicionSeparadorFinal = posicionCaracterFilaActual;
                                             segundoSeparador = true;
                                         }
                                     }
@@ -178,7 +184,7 @@ namespace AnalizadorLexico
                                         simbolos.Add(simbolo);
                                         ubicaciones.Add(indiceFilaActual + "," + (posicionSeparadorInicial + 1) + " - " + indiceFilaActual + "," + (posicionSeparadorFinal - 1));
                                         List<string> tipo = new List<string>();
-                                        tipo.Add("indentificador");
+                                        tipo.Add("identificador");
                                         tipos.Add(tipo);
                                     }
                                 }
@@ -197,6 +203,7 @@ namespace AnalizadorLexico
                 }
                 indiceFilaActual++;
             }
+            IngresarTexto.arregloTexto = new Queue<char[]>(temp);
         }
         public static List<int> encontrarCoincidencias(char caracterActual)
         {
