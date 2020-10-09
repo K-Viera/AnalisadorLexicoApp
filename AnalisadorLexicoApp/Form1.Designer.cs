@@ -37,12 +37,14 @@
             this.dtgvSimbolos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExcepciones = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSimbolos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIngresarTexto
             // 
-            this.btnIngresarTexto.Location = new System.Drawing.Point(180, 37);
+            this.btnIngresarTexto.Location = new System.Drawing.Point(308, 37);
             this.btnIngresarTexto.Name = "btnIngresarTexto";
             this.btnIngresarTexto.Size = new System.Drawing.Size(145, 23);
             this.btnIngresarTexto.TabIndex = 0;
@@ -108,7 +110,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 19);
+            this.label1.Location = new System.Drawing.Point(340, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 15);
             this.label1.TabIndex = 4;
@@ -124,11 +126,32 @@
             this.groupBox1.Text = "Analisis";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnExcepciones
+            // 
+            this.btnExcepciones.Location = new System.Drawing.Point(159, 37);
+            this.btnExcepciones.Name = "btnExcepciones";
+            this.btnExcepciones.Size = new System.Drawing.Size(143, 23);
+            this.btnExcepciones.TabIndex = 6;
+            this.btnExcepciones.Text = "Excepciones";
+            this.btnExcepciones.UseVisualStyleBackColor = true;
+            this.btnExcepciones.Click += new System.EventHandler(this.btnExcepciones_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(144, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Excepciones de identificadores";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 456);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnExcepciones);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtgvSimbolos);
             this.Controls.Add(this.btnAnalizar);
@@ -154,6 +177,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnExcepciones;
+        private System.Windows.Forms.Label label2;
     }
 }
 

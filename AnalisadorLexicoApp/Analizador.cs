@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 namespace AnalizadorLexico
 {
@@ -12,7 +13,7 @@ namespace AnalizadorLexico
         public static List<string> ubicaciones ;
         public static List<List<string>> tipos ;
 
-        public static void AnalizarCompleto() 
+        public static Boolean AnalizarCompleto() 
         {
          Queue<char[]> temp = new Queue<char[]>(IngresarTexto.arregloTexto);
          simbolos = new List<string>();
@@ -47,12 +48,10 @@ namespace AnalizadorLexico
                         if (segundoSeparador == false)
                         {
                             posicionCaracterFilaActual = posicionSeparadorInicial + 1;
-
                             //while que busca el siguiete separador,caracter por caracter
                             while (segundoSeparador == false)
                             {
                                 List<int> indexSimbolosCoincidencias = encontrarCoincidencias(filaActual[posicionCaracterFilaActual]);
-
                                 if (indexSimbolosCoincidencias.Count == 1)
                                 {
                                     //condicion 1
@@ -72,7 +71,7 @@ namespace AnalizadorLexico
                                         int posicionFinal = posicionCaracterFilaActual + 1;
                                         Boolean simboloCompleto = true;
                                         char[] arregloSimbolo = TablaSimbolosC.simbolos[indexSimbolosCoincidencias[0]].ToCharArray();
-                                        while (contador < arregloSimbolo.Length || simboloCompleto == false)
+                                        while (contador < arregloSimbolo.Length && simboloCompleto == true)
                                         {
                                             if (filaActual[posicionFinal] != arregloSimbolo[contador])
                                             {
@@ -98,11 +97,14 @@ namespace AnalizadorLexico
                                 else if (indexSimbolosCoincidencias.Count > 1)
                                 {
                                     //condicion 3
-                                    int contador = 1;
+                                    int contador = 0;
                                     int numero = indexSimbolosCoincidencias.Count;
-                                    while (numero != 1 && numero != 0)
+                                    string palabra = "";
+                                    int? coincidencia = null;
+                                    while (numero != 0)
                                     {
                                         char caracter = filaActual[posicionCaracterFilaActual + contador];
+                                        palabra = palabra + caracter;
                                         List<int> tempIndexSimbolosCoincidencias = new List<int>();
                                         for (int i = 0; i < indexSimbolosCoincidencias.Count; i++)
                                         {
@@ -110,71 +112,72 @@ namespace AnalizadorLexico
                                             {
                                                 if (caracter == TablaSimbolosC.simbolos[indexSimbolosCoincidencias[i]][contador])
                                                 {
+                                                    if (palabra.Length == TablaSimbolosC.simbolos[indexSimbolosCoincidencias[i]].Length)
+                                                    {
+                                                        coincidencia = indexSimbolosCoincidencias[i];
+                                                    }
                                                     tempIndexSimbolosCoincidencias.Add(indexSimbolosCoincidencias[i]);
                                                 }
                                             }
                                         }
                                         indexSimbolosCoincidencias = tempIndexSimbolosCoincidencias;
-                                        numero= indexSimbolosCoincidencias.Count;
+                                        numero = indexSimbolosCoincidencias.Count;
                                         contador++;
                                     }
 
-                                    if (indexSimbolosCoincidencias.Count == 1)
+                                    if (coincidencia != null)
                                     {
-                                        if (TablaSimbolosC.simbolos[indexSimbolosCoincidencias[0]].Length == contador)
-                                        {
-                                            simbolos.Add(TablaSimbolosC.simbolos[indexSimbolosCoincidencias[0]]);
-                                            operadorFinalTamaño = TablaSimbolosC.simbolos[indexSimbolosCoincidencias[0]].Length;
-                                            ubicaciones.Add(indiceFilaActual + "," + posicionCaracterFilaActual + " - " + indiceFilaActual + "," + (posicionCaracterFilaActual + contador));
-                                            tipos.Add(TablaSimbolosC.tipos[indexSimbolosCoincidencias[0]]);
-                                            posicionSeparadorFinal = posicionCaracterFilaActual;
-                                            segundoSeparador = true;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Error 404");
-                                        }
+                                        simbolos.Add(TablaSimbolosC.simbolos[(int)coincidencia]);
+                                        operadorFinalTamaño = TablaSimbolosC.simbolos[(int)coincidencia].Length;
+                                        ubicaciones.Add(indiceFilaActual + "," + posicionCaracterFilaActual + " - " + indiceFilaActual + "," + (posicionCaracterFilaActual
+                                            + TablaSimbolosC.simbolos[(int)coincidencia].Length - 1));
+                                        tipos.Add(TablaSimbolosC.tipos[(int)coincidencia]);
+                                        posicionSeparadorFinal = posicionCaracterFilaActual;
+                                        segundoSeparador = true;
                                     }
                                 }
                                 posicionCaracterFilaActual++;
                             }
 
                         }
+
+
                         //Si ya existe el segundo comparador, esta parte analiza el contenido en la sentencia
                         else
                         {
                             segundoSeparador = false;
-                            if ((posicionSeparadorFinal-posicionSeparadorInicial)>1) 
+                            if ((posicionSeparadorFinal - posicionSeparadorInicial) > 1)
                             {
                                 Boolean sePuede = true;
                                 //condicion 4
-                                foreach (char inicio in TablaSimbolosC.excepcionesInicioIdentificadores)
+
+                                Boolean esSimbolo = false;
+                                foreach (string simbolo in TablaSimbolosC.simbolos)
                                 {
-                                    if (filaActual[posicionSeparadorInicial + 1] == inicio) sePuede = false;
-                                }
-                                if (sePuede == true)
-                                {
-                                    Boolean esSimbolo = false;
-                                    foreach (string simbolo in TablaSimbolosC.simbolos)
+                                    if (simbolo.Length == posicionSeparadorFinal - posicionSeparadorInicial - 1)
                                     {
-                                        if (simbolo.Length == posicionSeparadorFinal - posicionSeparadorInicial - 1)
+                                        Boolean coincidenTodosLosCaracteres = true;
+                                        for (int x = 0; x < simbolo.Length; x++)
                                         {
-                                            Boolean coincidenTodosLosCaracteres = true;
-                                            for (int x = 0; x < simbolo.Length; x++)
-                                            {
-                                                if (filaActual[posicionSeparadorInicial + 1 + x] != simbolo[x]) coincidenTodosLosCaracteres = false;
-                                            }
-                                            if (coincidenTodosLosCaracteres == true)
-                                            {
-                                                esSimbolo = true;
-                                                simbolos.Add(simbolo);
-                                                ubicaciones.Add(indiceFilaActual + "," + (posicionSeparadorInicial + 1) + " - " + indiceFilaActual + "," + (posicionSeparadorFinal - 1));
-                                                tipos.Add(TablaSimbolosC.tipos[TablaSimbolosC.simbolos.IndexOf(simbolo)]);
-                                                break;
-                                            }
+                                            if (filaActual[posicionSeparadorInicial + 1 + x] != simbolo[x]) coincidenTodosLosCaracteres = false;
+                                        }
+                                        if (coincidenTodosLosCaracteres == true)
+                                        {
+                                            esSimbolo = true;
+                                            simbolos.Add(simbolo);
+                                            ubicaciones.Add(indiceFilaActual + "," + (posicionSeparadorInicial + 1) + " - " + indiceFilaActual + "," + (posicionSeparadorFinal - 1));
+                                            tipos.Add(TablaSimbolosC.tipos[TablaSimbolosC.simbolos.IndexOf(simbolo)]);
+                                            break;
                                         }
                                     }
-                                    if (esSimbolo == false)
+                                }
+                                if (esSimbolo == false)
+                                {
+                                    foreach (char inicio in TablaSimbolosC.excepcionesInicioIdentificadores)
+                                    {
+                                        if (filaActual[posicionSeparadorInicial + 1] == inicio) sePuede = false;
+                                    }
+                                    if (sePuede == true)
                                     {
                                         string simbolo = "";
                                         for (int i = posicionSeparadorInicial + 1; i < posicionSeparadorFinal; i++)
@@ -187,23 +190,34 @@ namespace AnalizadorLexico
                                         tipo.Add("identificador");
                                         tipos.Add(tipo);
                                     }
+                                    else
+                                    {
+                                        MessageBox.Show("error en " + indiceFilaActual + "," + (posicionSeparadorInicial + 1));
+                                        IngresarTexto.arregloTexto = new Queue<char[]>(temp);
+                                        return false;
+                                    }
+
+
                                 }
+
+
                             }
                             if (posicionSeparadorFinal == filaActual.Length - 1)
                             {
                                 posicionSeparadorInicial = -1;
                             }
-                            else 
+                            else
                             {
-                                posicionSeparadorInicial = posicionSeparadorFinal-1+operadorFinalTamaño;
+                                posicionSeparadorInicial = posicionSeparadorFinal - 1 + operadorFinalTamaño;
                             }
-                            
+
                         }
                     }
                 }
                 indiceFilaActual++;
             }
             IngresarTexto.arregloTexto = new Queue<char[]>(temp);
+            return true;
         }
         public static List<int> encontrarCoincidencias(char caracterActual)
         {

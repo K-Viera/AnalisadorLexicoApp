@@ -1,4 +1,5 @@
 ﻿using AnalizadorLexico;
+using AnalizadorLexicoApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,6 +84,12 @@ namespace AnalisadorLexicoApp
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExcepciones_Click(object sender, EventArgs e)
+        {
+            Excepciones ex = new Excepciones();
+            ex.ShowDialog();
         }
     }
 }

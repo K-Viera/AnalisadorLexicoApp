@@ -20,6 +20,19 @@ namespace AnalizadorLexico
             AgregarSimbolo("\n", "separador");
             AgregarSimbolo(" ", "separador");
         }
+        public static Boolean agregarExcepcion(char caracter)
+        {
+            if (excepcionesInicioIdentificadores.Contains(caracter) == false) 
+            {
+                excepcionesInicioIdentificadores.Add(caracter);
+                return true;
+            }
+            return false;
+        }
+        public static void eliminarExcepcion(int posicion)
+        {
+            excepcionesInicioIdentificadores.RemoveAt(posicion);
+        }
 
         #region Simbolos
         public static void AgregarSimbolo(string simbolo)
