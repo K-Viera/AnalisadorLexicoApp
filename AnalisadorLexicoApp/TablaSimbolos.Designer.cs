@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Simbolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dtgvConfiguracionSimbolos = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtSimbolo = new System.Windows.Forms.TextBox();
             this.txtTipoInicial = new System.Windows.Forms.TextBox();
@@ -40,54 +35,13 @@
             this.lblTipo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEjemplos = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvConfiguracionSimbolos)).BeginInit();
+            this.Simbolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dtgvConfiguracionSimbolos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvConfiguracionSimbolos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Simbolo
-            // 
-            this.Simbolo.HeaderText = "Simbolo";
-            this.Simbolo.Name = "Simbolo";
-            this.Simbolo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Tipos
-            // 
-            this.Tipos.HeaderText = "Tipos";
-            this.Tipos.Name = "Tipos";
-            this.Tipos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Tipos.Width = 200;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.Text = "Editar";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.Text = "Eliminar";
-            // 
-            // dtgvConfiguracionSimbolos
-            // 
-            this.dtgvConfiguracionSimbolos.AllowUserToAddRows = false;
-            this.dtgvConfiguracionSimbolos.AllowUserToDeleteRows = false;
-            this.dtgvConfiguracionSimbolos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvConfiguracionSimbolos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Simbolo,
-            this.Tipos,
-            this.Editar,
-            this.Eliminar});
-            this.dtgvConfiguracionSimbolos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtgvConfiguracionSimbolos.Location = new System.Drawing.Point(52, 95);
-            this.dtgvConfiguracionSimbolos.Name = "dtgvConfiguracionSimbolos";
-            this.dtgvConfiguracionSimbolos.Size = new System.Drawing.Size(544, 269);
-            this.dtgvConfiguracionSimbolos.TabIndex = 0;
-            this.dtgvConfiguracionSimbolos.Text = "dataGridView1";
-            this.dtgvConfiguracionSimbolos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvConfiguracionSimbolos_CellClick);
             // 
             // btnAgregar
             // 
@@ -156,30 +110,64 @@
             this.btnEjemplos.UseVisualStyleBackColor = true;
             this.btnEjemplos.Click += new System.EventHandler(this.btnEjemplos_Click);
             // 
+            // Simbolo
+            // 
+            this.Simbolo.HeaderText = "Simbolo";
+            this.Simbolo.Name = "Simbolo";
+            this.Simbolo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Tipos
+            // 
+            this.Tipos.HeaderText = "Tipos";
+            this.Tipos.Name = "Tipos";
+            this.Tipos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Tipos.Width = 200;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.Text = "Editar";
+            // 
             // TablaSimbolos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 404);
+            this.ClientSize = new System.Drawing.Size(548, 404);
+            // 
+            // dtgvConfiguracionSimbolos
+            // 
+            this.dtgvConfiguracionSimbolos.AllowUserToAddRows = false;
+            this.dtgvConfiguracionSimbolos.AllowUserToDeleteRows = false;
+            this.dtgvConfiguracionSimbolos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvConfiguracionSimbolos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Simbolo,
+            this.Tipos,
+            this.Editar});
+            this.dtgvConfiguracionSimbolos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtgvConfiguracionSimbolos.Location = new System.Drawing.Point(52, 95);
+            this.dtgvConfiguracionSimbolos.Name = "dtgvConfiguracionSimbolos";
+            this.dtgvConfiguracionSimbolos.Size = new System.Drawing.Size(446, 269);
+            this.dtgvConfiguracionSimbolos.TabIndex = 0;
+            this.dtgvConfiguracionSimbolos.Text = "dataGridView1";
+            this.dtgvConfiguracionSimbolos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvConfiguracionSimbolos_CellClick);
+            this.dtgvConfiguracionSimbolos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvConfiguracionSimbolos_CellContentClick);
             this.Controls.Add(this.btnEjemplos);
             this.Controls.Add(this.dtgvConfiguracionSimbolos);
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaSimbolos";
             this.Text = "TablaSimbolos";
             this.Load += new System.EventHandler(this.TablaSimbolos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvConfiguracionSimbolos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvConfiguracionSimbolos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.DataGridView dtgvConfiguracionSimbolos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Simbolo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipos;
-        private System.Windows.Forms.DataGridViewButtonColumn Editar;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtSimbolo;
         private System.Windows.Forms.TextBox txtTipoInicial;
@@ -187,5 +175,8 @@
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEjemplos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Simbolo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipos;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
     }
 }

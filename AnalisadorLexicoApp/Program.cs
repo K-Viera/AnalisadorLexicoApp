@@ -1,4 +1,5 @@
 using AnalizadorLexico;
+using AnalizadorLexicoApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace AnalisadorLexicoApp
         [STAThread]
         static void Main()
         {
-            TablaSimbolosC.CarcarModuloPorDefecto();
+            TablaTokens.moduloPorDefecto();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

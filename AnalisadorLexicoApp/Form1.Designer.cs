@@ -39,12 +39,23 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExcepciones = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAnalizarTokens = new System.Windows.Forms.Button();
+            this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TokenId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtgvTokens = new System.Windows.Forms.DataGridView();
+            this.btnAritmetica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSimbolos)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTokens)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIngresarTexto
             // 
-            this.btnIngresarTexto.Location = new System.Drawing.Point(308, 37);
+            this.btnIngresarTexto.Location = new System.Drawing.Point(518, 36);
             this.btnIngresarTexto.Name = "btnIngresarTexto";
             this.btnIngresarTexto.Size = new System.Drawing.Size(145, 23);
             this.btnIngresarTexto.TabIndex = 0;
@@ -54,7 +65,7 @@
             // 
             // btnTablaSimbolos
             // 
-            this.btnTablaSimbolos.Location = new System.Drawing.Point(12, 37);
+            this.btnTablaSimbolos.Location = new System.Drawing.Point(177, 37);
             this.btnTablaSimbolos.Name = "btnTablaSimbolos";
             this.btnTablaSimbolos.Size = new System.Drawing.Size(141, 23);
             this.btnTablaSimbolos.TabIndex = 1;
@@ -64,11 +75,11 @@
             // 
             // btnAnalizar
             // 
-            this.btnAnalizar.Location = new System.Drawing.Point(180, 90);
+            this.btnAnalizar.Location = new System.Drawing.Point(138, 14);
             this.btnAnalizar.Name = "btnAnalizar";
-            this.btnAnalizar.Size = new System.Drawing.Size(75, 23);
+            this.btnAnalizar.Size = new System.Drawing.Size(140, 21);
             this.btnAnalizar.TabIndex = 2;
-            this.btnAnalizar.Text = "Analizar";
+            this.btnAnalizar.Text = "Analizar Simbolos";
             this.btnAnalizar.UseVisualStyleBackColor = true;
             this.btnAnalizar.Click += new System.EventHandler(this.btnAnalizar_Click);
             // 
@@ -101,16 +112,16 @@
             this.Simbolo,
             this.Ubicacion,
             this.Tipos});
-            this.dtgvSimbolos.Location = new System.Drawing.Point(30, 119);
+            this.dtgvSimbolos.Location = new System.Drawing.Point(37, 44);
             this.dtgvSimbolos.Name = "dtgvSimbolos";
-            this.dtgvSimbolos.Size = new System.Drawing.Size(423, 289);
+            this.dtgvSimbolos.Size = new System.Drawing.Size(423, 287);
             this.dtgvSimbolos.TabIndex = 3;
             this.dtgvSimbolos.Text = "dataGridView1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(340, 19);
+            this.label1.Location = new System.Drawing.Point(550, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 15);
             this.label1.TabIndex = 4;
@@ -118,17 +129,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 76);
+            this.groupBox1.Controls.Add(this.dtgvSimbolos);
+            this.groupBox1.Controls.Add(this.btnAnalizar);
+            this.groupBox1.Location = new System.Drawing.Point(12, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(466, 359);
+            this.groupBox1.Size = new System.Drawing.Size(466, 357);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Analisis";
+            this.groupBox1.Text = "Analisis Tabla Simbolos";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnExcepciones
             // 
-            this.btnExcepciones.Location = new System.Drawing.Point(159, 37);
+            this.btnExcepciones.Location = new System.Drawing.Point(352, 36);
             this.btnExcepciones.Name = "btnExcepciones";
             this.btnExcepciones.Size = new System.Drawing.Size(143, 23);
             this.btnExcepciones.TabIndex = 6;
@@ -139,28 +152,104 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(144, 19);
+            this.label2.Location = new System.Drawing.Point(337, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 15);
             this.label2.TabIndex = 7;
             this.label2.Text = "Excepciones de identificadores";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Tabla Tokens";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAnalizarTokens
+            // 
+            this.btnAnalizarTokens.Location = new System.Drawing.Point(119, 12);
+            this.btnAnalizarTokens.Name = "btnAnalizarTokens";
+            this.btnAnalizarTokens.Size = new System.Drawing.Size(124, 23);
+            this.btnAnalizarTokens.TabIndex = 8;
+            this.btnAnalizarTokens.Text = "Analizar Tokens";
+            this.btnAnalizarTokens.UseVisualStyleBackColor = true;
+            this.btnAnalizarTokens.Click += new System.EventHandler(this.btnAnalizarTokens_Click);
+            // 
+            // Token
+            // 
+            this.Token.HeaderText = "Token";
+            this.Token.Name = "Token";
+            // 
+            // TokenId
+            // 
+            this.TokenId.HeaderText = "TokenId";
+            this.TokenId.Name = "TokenId";
+            // 
+            // Lexema
+            // 
+            this.Lexema.HeaderText = "Lexema";
+            this.Lexema.Name = "Lexema";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtgvTokens);
+            this.groupBox2.Controls.Add(this.btnAnalizarTokens);
+            this.groupBox2.Location = new System.Drawing.Point(500, 96);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(380, 356);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Analisis Tabla Tokens";
+            // 
+            // dtgvTokens
+            // 
+            this.dtgvTokens.AllowUserToAddRows = false;
+            this.dtgvTokens.AllowUserToDeleteRows = false;
+            this.dtgvTokens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvTokens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Token,
+            this.TokenId,
+            this.Lexema});
+            this.dtgvTokens.Location = new System.Drawing.Point(15, 43);
+            this.dtgvTokens.Name = "dtgvTokens";
+            this.dtgvTokens.Size = new System.Drawing.Size(341, 287);
+            this.dtgvTokens.TabIndex = 9;
+            this.dtgvTokens.Text = "dataGridView1";
+            // 
+            // btnAritmetica
+            // 
+            this.btnAritmetica.Location = new System.Drawing.Point(691, 67);
+            this.btnAritmetica.Name = "btnAritmetica";
+            this.btnAritmetica.Size = new System.Drawing.Size(127, 23);
+            this.btnAritmetica.TabIndex = 11;
+            this.btnAritmetica.Text = "Aritmetica";
+            this.btnAritmetica.UseVisualStyleBackColor = true;
+            this.btnAritmetica.Click += new System.EventHandler(this.btnAritmetica_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 456);
+            this.ClientSize = new System.Drawing.Size(977, 480);
+            this.Controls.Add(this.btnAritmetica);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExcepciones);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtgvSimbolos);
-            this.Controls.Add(this.btnAnalizar);
             this.Controls.Add(this.btnTablaSimbolos);
             this.Controls.Add(this.btnIngresarTexto);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Ingresar Texto";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSimbolos)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvTokens)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,6 +268,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnExcepciones;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAnalizarTokens;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TokenId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lexema;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dtgvTokens;
+        private System.Windows.Forms.Button btnAritmetica;
     }
 }
 

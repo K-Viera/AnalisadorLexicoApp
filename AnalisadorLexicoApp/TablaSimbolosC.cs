@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AnalizadorLexico
 {
-    static class TablaSimbolosC
+    class TablaSimbolosC
     {
         public static List<string> simbolos=new List<string>();
         public static List<List<string>> tipos = new List<List<string>>();
@@ -14,12 +14,6 @@ namespace AnalizadorLexico
 
         public static List<char> excepcionesInicioIdentificadores = new List<char>();
 
-        public static void CarcarModuloPorDefecto() 
-        {
-            AgregarSimbolo("\f", "separador");
-            AgregarSimbolo("\n", "separador");
-            AgregarSimbolo(" ", "separador");
-        }
         public static Boolean agregarExcepcion(char caracter)
         {
             if (excepcionesInicioIdentificadores.Contains(caracter) == false) 

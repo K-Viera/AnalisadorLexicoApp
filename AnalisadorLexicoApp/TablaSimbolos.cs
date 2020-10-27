@@ -21,19 +21,15 @@ namespace AnalisadorLexicoApp
             if (e.ColumnIndex <= 1) return;
             if (e.ColumnIndex == 2)
             {
-                Modificar mod = new Modificar(e.RowIndex + 3);
+                Modificar mod = new Modificar(e.RowIndex);
                 mod.ShowDialog();
                 Refrescar();
-            }
-            else if (e.ColumnIndex == 3)
-            {
-                TablaSimbolosC.EliminarSimbolo(e.RowIndex + 3);
-                dtgvConfiguracionSimbolos.Rows.RemoveAt(e.RowIndex);
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            return;
             if (txtSimbolo.Text == "" || txtTipoInicial.Text == "") 
             {
                 MessageBox.Show("Error, ningun dato puede quedar vacio");
@@ -64,39 +60,34 @@ namespace AnalisadorLexicoApp
         public void Refrescar() 
         {
             dtgvConfiguracionSimbolos.Rows.Clear();
-            for (int i = 3; i < TablaSimbolosC.simbolos.Count; i++)
+            for (int i = 0; i < TablaSimbolosC.simbolos.Count; i++)
             {
                 int n = dtgvConfiguracionSimbolos.Rows.Add();
 
                     dtgvConfiguracionSimbolos.Rows[n].Cells[0].Value = TablaSimbolosC.simbolos[i];
-
-                string simbolo = TablaSimbolosC.tipos[i][0];
-                for (int j = 1; j < TablaSimbolosC.tipos[i].Count; j++)
+                string simbolo = "";
+                if (TablaSimbolosC.tipos[i].Count != 0) 
                 {
-                    simbolo = simbolo + " ; " + TablaSimbolosC.tipos[i][j];
+                    simbolo = TablaSimbolosC.tipos[i][0];
+                    for (int j = 1; j < TablaSimbolosC.tipos[i].Count; j++)
+                    {
+                        simbolo = simbolo + " ; " + TablaSimbolosC.tipos[i][j];
+                    }
                 }
+                
                 dtgvConfiguracionSimbolos.Rows[n].Cells[1].Value = simbolo;
                 dtgvConfiguracionSimbolos.Rows[n].Cells[2].Value = "Editar";
-                dtgvConfiguracionSimbolos.Rows[n].Cells[3].Value = "Eliminar";
             }
         }
 
         private void btnEjemplos_Click(object sender, EventArgs e)
         {
-            if (TablaSimbolosC.simbolos.Count > 3) 
-            {
-                MessageBox.Show("Ya existen tipos creados");
-                return;
-            }
-            TablaSimbolosC.AgregarSimbolo("boolean", "Tipo de dato");
-            TablaSimbolosC.AgregarSimbolo("=", "separador");
-            TablaSimbolosC.AgregarSimbolo("(", "separador");
-            TablaSimbolosC.AgregarSimbolo(")", "separador");
-            TablaSimbolosC.AgregarSimbolo("{", "separador");
-            TablaSimbolosC.AgregarSimbolo("}", "separador");
-            TablaSimbolosC.AgregarSimbolo("==", "operador");
-            TablaSimbolosC.AgregarTipoASimbolo("==", "separador");
-            Refrescar();
+            return;
+        }
+
+        private void dtgvConfiguracionSimbolos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

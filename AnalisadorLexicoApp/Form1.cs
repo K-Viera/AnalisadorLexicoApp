@@ -70,12 +70,30 @@ namespace AnalisadorLexicoApp
                 {
                     dtgvSimbolos.Rows[n].Cells[0].Value = Analizador.simbolos[n];
                 }
-                dtgvSimbolos.Rows[n].Cells[1].Value = Analizador.ubicaciones[n];
-
-                string simbolo = Analizador.tipos[n][0];
-                for (int j = 1; j < Analizador.tipos[n].Count;j++) 
+                string ubicacion;
+                if (Analizador.ubicaciones[n].Count == 2)
                 {
-                    simbolo=simbolo+" ; "+ Analizador.tipos[n][j];
+                    string inicio = Analizador.ubicaciones[n][0].ToString();
+                    string fin = Analizador.ubicaciones[n][1].ToString();
+                    ubicacion = (inicio + "," + fin);
+                }
+                else 
+                {
+                    string fila = Analizador.ubicaciones[n][0].ToString();
+                    string inicio= Analizador.ubicaciones[n][1].ToString();
+                    string fin = Analizador.ubicaciones[n][2].ToString();
+                    ubicacion = (fila + "," + inicio+" - "+fila+","+fin);
+                }
+                dtgvSimbolos.Rows[n].Cells[1].Value = ubicacion;
+
+                string simbolo = "";
+                if (Analizador.tipos[n].Count != 0)
+                {
+                    simbolo = Analizador.tipos[n][0];
+                    for (int j = 1; j < Analizador.tipos[n].Count; j++)
+                    {
+                        simbolo = simbolo + " ; " + Analizador.tipos[n][j];
+                    }
                 }
                 dtgvSimbolos.Rows[n].Cells[2].Value = simbolo;
             }
@@ -90,6 +108,41 @@ namespace AnalisadorLexicoApp
         {
             Excepciones ex = new Excepciones();
             ex.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TablaTokensForm Tokens = new TablaTokensForm();
+            Tokens.ShowDialog();
+        }
+
+        private void btnAnalizarTokens_Click(object sender, EventArgs e)
+        {
+            if (IngresarTexto.arregloTexto == null)
+            {
+                MessageBox.Show("Error 404, Archivo de texto no encontrado");
+                return;
+            }
+            Analizador.AnalizarCompleto();
+            dtgvTokens.Rows.Clear();
+            for (int i = 0; i < Analizador.tokens.Count; i++) 
+            {
+                int n = dtgvTokens.Rows.Add();
+                dtgvTokens.Rows[n].Cells[0].Value = Analizador.tokens[n];
+                dtgvTokens.Rows[n].Cells[1].Value = Analizador.tokensIds[n];
+                dtgvTokens.Rows[n].Cells[2].Value = Analizador.lexemas[n];
+            }
+        }
+
+        private void btnAritmetica_Click(object sender, EventArgs e)
+        {
+            AritmeticaForm ventana = new AritmeticaForm();
+            ventana.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
