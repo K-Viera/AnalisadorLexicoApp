@@ -47,6 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgvTokens = new System.Windows.Forms.DataGridView();
             this.btnAritmetica = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSimbolos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -221,7 +222,7 @@
             // 
             // btnAritmetica
             // 
-            this.btnAritmetica.Location = new System.Drawing.Point(691, 67);
+            this.btnAritmetica.Location = new System.Drawing.Point(709, 36);
             this.btnAritmetica.Name = "btnAritmetica";
             this.btnAritmetica.Size = new System.Drawing.Size(127, 23);
             this.btnAritmetica.TabIndex = 11;
@@ -229,11 +230,21 @@
             this.btnAritmetica.UseVisualStyleBackColor = true;
             this.btnAritmetica.Click += new System.EventHandler(this.btnAritmetica_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(686, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Analizar Propiedades Aritmeticas";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 480);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAritmetica);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
@@ -276,6 +287,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dtgvTokens;
         private System.Windows.Forms.Button btnAritmetica;
+        private System.Windows.Forms.Label label3;
     }
 }
 

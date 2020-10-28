@@ -28,6 +28,29 @@ namespace AnalizadorLexicoApp
                 string inicio = Analizador.ubicacionesSentencias[n][1].ToString();
                 string fin = Analizador.ubicacionesSentencias[n][2].ToString();
                 dataGridView2.Rows[n].Cells[1].Value = (fila + "," + inicio + " - " + fila + "," + fin);
+                dataGridView2.Rows[n].Cells[2].Value = "Analizar";
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex <= 1) 
+            {
+                return;
+            }
+            if (e.ColumnIndex == 2) 
+            {
+                AnalizarExpresiones.Principal(Analizador.sentenciasAritmeticas[e.RowIndex]);
             }
         }
     }

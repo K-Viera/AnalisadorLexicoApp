@@ -136,6 +136,11 @@ namespace AnalisadorLexicoApp
 
         private void btnAritmetica_Click(object sender, EventArgs e)
         {
+            if (IngresarTexto.arregloTexto == null)
+            {
+                MessageBox.Show("Error 404, Archivo de texto no encontrado");
+                return;
+            }
             AritmeticaForm ventana = new AritmeticaForm();
             ventana.ShowDialog();
         }
