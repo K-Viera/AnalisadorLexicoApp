@@ -14,20 +14,28 @@ namespace AnalizadorLexicoApp
         public static List<int> contadorErrores;
         public static void Principal(string cadenaIngresa)
         {
+            //se ingresa la cadena
             cadena = cadenaIngresa;
+            //se incializa los errores en 0
             contadorErrores = new List<int>();
+            //Se asigna el primer token
             tokenActual = PrimerToken();
+            //se genera el arbol de la gramatica libre de contexto
             expresion();
+
+           // si se detiene en una posicion que no sea el fin de la cadena, sigue recorrindola desde 0
             while (tokenActual != null) 
             {
                 contadorErrores.Add(posicion);
                 tokenActual = SiguienteToken();
                 expresion();
             }
+            //si no teine errores se indica que la cadena es correcta
             if (contadorErrores.Count == 0)
             {
                 MessageBox.Show("Cadena Correcta");
             }
+            //si tiene errores se indica en que posicion ocurren los errores
             else 
             {
                 string mensaje = ("Error en las posiciones: ");
@@ -135,6 +143,7 @@ namespace AnalizadorLexicoApp
             factor();
             termino_prima();
         }
+
         public static void termino_prima()
         {
             if (tokenActual != null) 
@@ -154,8 +163,6 @@ namespace AnalizadorLexicoApp
                 else return;
             }
         }
-            
-
         public static void expresion()
         {
             termino();

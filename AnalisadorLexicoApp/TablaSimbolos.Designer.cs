@@ -34,7 +34,6 @@
             this.lblSimbolo = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnEjemplos = new System.Windows.Forms.Button();
             this.Simbolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -99,17 +98,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar Simbolo";
             // 
-            // btnEjemplos
-            // 
-            this.btnEjemplos.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEjemplos.Location = new System.Drawing.Point(12, 369);
-            this.btnEjemplos.Name = "btnEjemplos";
-            this.btnEjemplos.Size = new System.Drawing.Size(90, 23);
-            this.btnEjemplos.TabIndex = 8;
-            this.btnEjemplos.Text = "Cargar Ejemplos";
-            this.btnEjemplos.UseVisualStyleBackColor = true;
-            this.btnEjemplos.Click += new System.EventHandler(this.btnEjemplos_Click);
-            // 
             // Simbolo
             // 
             this.Simbolo.HeaderText = "Simbolo";
@@ -130,12 +118,6 @@
             this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Editar.Text = "Editar";
             // 
-            // TablaSimbolos
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 404);
-            // 
             // dtgvConfiguracionSimbolos
             // 
             this.dtgvConfiguracionSimbolos.AllowUserToAddRows = false;
@@ -153,7 +135,12 @@
             this.dtgvConfiguracionSimbolos.Text = "dataGridView1";
             this.dtgvConfiguracionSimbolos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvConfiguracionSimbolos_CellClick);
             this.dtgvConfiguracionSimbolos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvConfiguracionSimbolos_CellContentClick);
-            this.Controls.Add(this.btnEjemplos);
+            // 
+            // TablaSimbolos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(548, 404);
             this.Controls.Add(this.dtgvConfiguracionSimbolos);
             this.Controls.Add(this.groupBox1);
             this.Name = "TablaSimbolos";

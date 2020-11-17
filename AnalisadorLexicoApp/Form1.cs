@@ -12,6 +12,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace AnalisadorLexicoApp
 {
@@ -149,5 +152,24 @@ namespace AnalisadorLexicoApp
         {
 
         }
+
+        private void btnPrueba_Click(object sender, EventArgs e)
+        {
+            TablaViewModel Tabla = new TablaViewModel(TablaSimbolosC.simbolos, TablaSimbolosC.tipos);
+            string cadenaJson = JsonSerializer.Serialize(Tabla);
+            File.WriteAllText("guardar.txt", cadenaJson);
+        }
+    }
+    public class TablaViewModel
+    {
+        public List<string> simbolos { get; set; }
+        public List<List<string>> tipos { get; set; }
+
+        public TablaViewModel(List<string> simbolos, List<List<string>> tipos) 
+        {
+            this.simbolos = simbolos;
+            this.tipos = tipos;
+        }
+
     }
 }
