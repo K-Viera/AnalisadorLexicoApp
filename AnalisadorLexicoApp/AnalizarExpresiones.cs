@@ -12,7 +12,7 @@ namespace AnalizadorLexicoApp
         public static int posicion;
         public static char? tokenActual;
         public static List<int> contadorErrores;
-        public static void Principal(string cadenaIngresa)
+        public static Boolean Principal(string cadenaIngresa)
         {
             //se ingresa la cadena
             cadena = cadenaIngresa;
@@ -34,6 +34,7 @@ namespace AnalizadorLexicoApp
             if (contadorErrores.Count == 0)
             {
                 MessageBox.Show("Cadena Correcta");
+                return true;
             }
             //si tiene errores se indica en que posicion ocurren los errores
             else 
@@ -45,6 +46,7 @@ namespace AnalizadorLexicoApp
                 }
                 mensaje = mensaje + " de la cadena";
                 MessageBox.Show(mensaje);
+                return false;
             }
 
         }
