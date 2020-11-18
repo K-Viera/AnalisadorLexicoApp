@@ -31,6 +31,7 @@
             this.Cadena1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Analizar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnNotaciones = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,22 @@
             this.Analizar.Name = "Analizar";
             this.Analizar.ReadOnly = true;
             // 
+            // btnNotaciones
+            // 
+            this.btnNotaciones.Location = new System.Drawing.Point(211, 415);
+            this.btnNotaciones.Name = "btnNotaciones";
+            this.btnNotaciones.Size = new System.Drawing.Size(170, 23);
+            this.btnNotaciones.TabIndex = 1;
+            this.btnNotaciones.Text = "Notaciones Prefija y Postfija";
+            this.btnNotaciones.UseVisualStyleBackColor = true;
+            this.btnNotaciones.Click += new System.EventHandler(this.btnNotaciones_Click);
+            // 
+            // AritmeticaForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(670, 450);
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -70,12 +87,7 @@
             this.dataGridView2.Text = "dataGridView2";
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick_1);
-            // 
-            // AritmeticaForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 450);
+            this.Controls.Add(this.btnNotaciones);
             this.Controls.Add(this.dataGridView2);
             this.Name = "AritmeticaForm";
             this.Text = "AritmeticaForm";
@@ -91,5 +103,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewButtonColumn Analizar;
+        private System.Windows.Forms.Button btnNotaciones;
     }
 }

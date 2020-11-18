@@ -48,7 +48,6 @@
             this.dtgvTokens = new System.Windows.Forms.DataGridView();
             this.btnAritmetica = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnPrueba = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSimbolos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -240,22 +239,11 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Analizar Propiedades Aritmeticas";
             // 
-            // btnPrueba
-            // 
-            this.btnPrueba.Location = new System.Drawing.Point(804, 67);
-            this.btnPrueba.Name = "btnPrueba";
-            this.btnPrueba.Size = new System.Drawing.Size(75, 23);
-            this.btnPrueba.TabIndex = 13;
-            this.btnPrueba.Text = "Prueba";
-            this.btnPrueba.UseVisualStyleBackColor = true;
-            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 480);
-            this.Controls.Add(this.btnPrueba);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAritmetica);
             this.Controls.Add(this.groupBox2);
@@ -300,7 +288,6 @@
         private System.Windows.Forms.DataGridView dtgvTokens;
         private System.Windows.Forms.Button btnAritmetica;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnPrueba;
     }
 }
 

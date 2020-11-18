@@ -53,5 +53,11 @@ namespace AnalizadorLexicoApp
                 AnalizarExpresiones.Principal(Analizador.sentenciasAritmeticas[e.RowIndex]);
             }
         }
+
+        private void btnNotaciones_Click(object sender, EventArgs e)
+        {
+            NotacionesForm ventana = new NotacionesForm();
+            ventana.ShowDialog();
+        }
     }
 }

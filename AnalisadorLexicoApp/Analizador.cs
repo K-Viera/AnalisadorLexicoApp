@@ -19,6 +19,8 @@ namespace AnalizadorLexico
         public static List<string> sentenciasAritmeticas;
         public static List<List<int>> ubicacionesSentencias;
 
+        public static List<string> sentenciasAritmeticasCorrectas;
+
         public static Boolean AnalizarCompleto()
         {
             long id = TablaTokens.id;
@@ -327,6 +329,15 @@ namespace AnalizadorLexico
                 ubicacionesSentencias.Add(lista);
             }
 
+        }
+        public static void analizarSentenciasAritmeticasCorrectas() 
+        {
+            sentenciasAritmeticasCorrectas = new List<string>();
+            for (int i = 0; i < sentenciasAritmeticas.Count; i++) 
+            {
+                Boolean esCorrecta = AnalizarExpresionesSinMensajes.Principal(sentenciasAritmeticas[i]);
+                if (esCorrecta == true) { sentenciasAritmeticasCorrectas.Add(sentenciasAritmeticas[i]); }
+            }
         }
         public static List<int> encontrarCoincidencias(char caracterActual)
         {

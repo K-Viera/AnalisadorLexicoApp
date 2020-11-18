@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
 
 namespace AnalizadorLexicoApp
 {
-    class Notaciones
+    class AnalizarExpresionesSinMensajes
     {
         public static string cadena;
         public static int posicion;
         public static char? tokenActual;
         public static List<int> contadorErrores;
-        public static Boolean Prefijo;
-        public static string mensaje;
-        public static Boolean Principal(string cadenaIngresa,Boolean orden)
+        public static Boolean Principal(string cadenaIngresa)
         {
-            mensaje = "";
-            //se indica si se desea imprimir en preorden o no
-            Prefijo = orden;
             //se ingresa la cadena
             cadena = cadenaIngresa;
             //se incializa los errores en 0
@@ -34,7 +28,6 @@ namespace AnalizadorLexicoApp
                 tokenActual = SiguienteToken();
                 expresion();
             }
-            MessageBox.Show(mensaje);
             //si no teine errores se indica que la cadena es correcta
             if (contadorErrores.Count == 0)
             {
@@ -45,7 +38,7 @@ namespace AnalizadorLexicoApp
             {
                 return false;
             }
-           
+
         }
         public static char? PrimerToken()
         {
@@ -64,6 +57,7 @@ namespace AnalizadorLexicoApp
 
         public static void HacerMatch(char? t)
         {
+
             if (t == tokenActual)
             {
                 tokenActual = SiguienteToken();
@@ -90,7 +84,6 @@ namespace AnalizadorLexicoApp
             {
                 if (Es_digito(tokenActual))
                 {
-                    mensaje += tokenActual;
                     HacerMatch(tokenActual);
                 }
                 else
@@ -103,6 +96,7 @@ namespace AnalizadorLexicoApp
         {
             digito();
             numero_prima();
+
         }
         public static void numero_prima()
         {
@@ -128,10 +122,8 @@ namespace AnalizadorLexicoApp
                 else if (tokenActual == '(')
                 {
                     HacerMatch('(');
-                    mensaje += "(";
                     expresion();
                     HacerMatch(')');
-                    mensaje += ")";
                 }
             }
         }
@@ -150,14 +142,12 @@ namespace AnalizadorLexicoApp
                 {
                     HacerMatch('*');
                     factor();
-                    if (Prefijo == false) mensaje += "*";
                     termino_prima();
                 }
                 else if (tokenActual == '/')
                 {
                     HacerMatch('/');
                     factor();
-                    if (Prefijo == false) mensaje += "/";
                     termino_prima();
                 }
                 else return;
@@ -165,7 +155,7 @@ namespace AnalizadorLexicoApp
         }
         public static void expresion()
         {
-                termino();
+            termino();
             expresion_prima();
         }
         public static void expresion_prima()
@@ -176,14 +166,12 @@ namespace AnalizadorLexicoApp
                 {
                     HacerMatch('+');
                     termino();
-                    if (Prefijo == false) mensaje += "+";
                     expresion_prima();
                 }
                 else if (tokenActual == '-')
                 {
                     HacerMatch('-');
                     termino();
-                    if (Prefijo == false) mensaje += "-";
                     expresion_prima();
                 }
                 else return;
