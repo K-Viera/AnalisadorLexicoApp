@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace AnalizadorLexicoApp
 {
-    class Notaciones
+    class NotacionesConsideroCorrecta
     {
         public static string cadena;
         public static int posicion;
@@ -13,7 +13,7 @@ namespace AnalizadorLexicoApp
         public static List<int> contadorErrores;
         public static Boolean Prefijo;
         public static string mensaje;
-        public static Boolean Principal(string cadenaIngresa,Boolean orden)
+        public static Boolean Principal(string cadenaIngresa, Boolean orden)
         {
             mensaje = "";
             //se indica si se desea imprimir en preorden o no
@@ -45,7 +45,7 @@ namespace AnalizadorLexicoApp
             {
                 return false;
             }
-           
+
         }
         public static char? PrimerToken()
         {
@@ -64,6 +64,7 @@ namespace AnalizadorLexicoApp
 
         public static void HacerMatch(char? t)
         {
+
             if (t == tokenActual)
             {
                 tokenActual = SiguienteToken();
@@ -127,11 +128,11 @@ namespace AnalizadorLexicoApp
                 }
                 else if (tokenActual == '(')
                 {
-                    HacerMatch('(');
                     mensaje += "(";
+                    HacerMatch('(');                 
                     expresion();
-                    HacerMatch(')');
                     mensaje += ")";
+                    HacerMatch(')');
                 }
             }
         }
@@ -148,16 +149,16 @@ namespace AnalizadorLexicoApp
             {
                 if (tokenActual == '*')
                 {
+                    mensaje += "*";
                     HacerMatch('*');
                     factor();
-                    if (Prefijo == false) mensaje += "*";
                     termino_prima();
                 }
                 else if (tokenActual == '/')
                 {
+                    mensaje += "/";
                     HacerMatch('/');
                     factor();
-                    if (Prefijo == false) mensaje += "/";
                     termino_prima();
                 }
                 else return;
@@ -165,14 +166,10 @@ namespace AnalizadorLexicoApp
         }
         public static void expresion()
         {
-            //string auxi = mensaje;
-            //mensaje = "";
+            if(Prefijo==true)
+            mensaje += "expresion";
             termino();
-            //string term = mensaje;
-            //mensaje = "";
             expresion_prima();
-            //string expr = mensaje;
-            //mensaje = auxi + expr + term;
         }
         public static void expresion_prima()
         {
@@ -180,48 +177,17 @@ namespace AnalizadorLexicoApp
             {
                 if (tokenActual == '+')
                 {
-                    if (Prefijo == true)
-                    {
-                        string auxi = mensaje;
-                        mensaje = "";
-                        HacerMatch('+');
-                        termino();
-                        string term = mensaje;
-                        mensaje = "";
-                        expresion_prima();
-                        string expr = mensaje;
-                        mensaje = auxi + "+" + expr + term;
-                    }
-                    else 
-                    {
-                        HacerMatch('+');
-                        termino();
-                        if (Prefijo == false) mensaje += "+";
-                        expresion_prima();
-                    }
-                    
+                    mensaje += "+";
+                    HacerMatch('+');
+                    termino();
+                    expresion_prima();
                 }
                 else if (tokenActual == '-')
                 {
-                    if (Prefijo == true)
-                    {
-                        string auxi = mensaje;
-                        mensaje = "";
-                        HacerMatch('-');
-                        termino();
-                        string term = mensaje;
-                        mensaje = "";
-                        expresion_prima();
-                        string expr = mensaje;
-                        mensaje = auxi + "-" + expr + term;
-                    }
-                    else
-                    {
-                        HacerMatch('-');
-                        termino();
-                        if (Prefijo == false) mensaje += "-";
-                        expresion_prima();
-                    }
+                    mensaje += "-";
+                    HacerMatch('-');
+                    termino();
+                    expresion_prima();
                 }
                 else return;
             }
