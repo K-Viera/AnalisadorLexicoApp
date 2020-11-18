@@ -31,6 +31,8 @@ namespace AnalizadorLexicoApp
                 dataGridView1.Rows[n].Cells[0].Value = Analizador.sentenciasAritmeticasCorrectas[n];;
                 dataGridView1.Rows[n].Cells[1].Value = "Preorden";
                 dataGridView1.Rows[n].Cells[2].Value = "Postorden";
+                dataGridView1.Rows[n].Cells[3].Value = "Preorden v2.0";
+                dataGridView1.Rows[n].Cells[4].Value = "Postorden v2.0";
             }
         }
 
@@ -46,6 +48,14 @@ namespace AnalizadorLexicoApp
             } else if (e.ColumnIndex == 2) 
             {
                 Notaciones.Principal(Analizador.sentenciasAritmeticasCorrectas[e.RowIndex], false);
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                NotacionesConsideroCorrecta.Principal(Analizador.sentenciasAritmeticasCorrectas[e.RowIndex], true);
+            }
+            else if (e.ColumnIndex == 4)
+            {
+                NotacionesConsideroCorrecta.Principal(Analizador.sentenciasAritmeticasCorrectas[e.RowIndex], false);
             }
         }
     }

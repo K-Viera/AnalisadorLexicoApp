@@ -87,6 +87,7 @@ namespace AnalizadorLexicoApp
         }
         public static void digito()
         {
+            if (Prefijo == true) mensaje += "<DIGT>";
             if (tokenActual != null)
             {
                 if (Es_digito(tokenActual))
@@ -102,6 +103,7 @@ namespace AnalizadorLexicoApp
 
         public static void numero()
         {
+            if (Prefijo == true) mensaje += "<NUMS>";
             digito();
             numero_prima();
         }
@@ -120,6 +122,7 @@ namespace AnalizadorLexicoApp
 
         public static void factor()
         {
+            if (Prefijo == true) mensaje += "<FACT>";
             if (tokenActual != null)
             {
                 if (Es_digito(tokenActual))
@@ -139,6 +142,7 @@ namespace AnalizadorLexicoApp
 
         public static void termino()
         {
+            if (Prefijo == true) mensaje += "<TERM>";
             factor();
             termino_prima();
         }
@@ -166,8 +170,7 @@ namespace AnalizadorLexicoApp
         }
         public static void expresion()
         {
-            if(Prefijo==true)
-            mensaje += "expresion";
+            if (Prefijo == true) mensaje += "<EXPR>";
             termino();
             expresion_prima();
         }

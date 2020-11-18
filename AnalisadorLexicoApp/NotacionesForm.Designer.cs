@@ -31,6 +31,8 @@
             this.Cadena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Preorden = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Postorden = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Preorden2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Postorden2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +59,22 @@
             this.Postorden.ReadOnly = true;
             this.Postorden.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // Preorden2
+            // 
+            this.Preorden2.HeaderText = "Preorden v2.0";
+            this.Preorden2.Name = "Preorden2";
+            // 
+            // Postorden2
+            // 
+            this.Postorden2.HeaderText = "Postorden v2.0";
+            this.Postorden2.Name = "Postorden2";
+            // 
+            // NotacionesForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(809, 307);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -65,20 +83,16 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cadena,
             this.Preorden,
-            this.Postorden});
+            this.Postorden,
+            this.Preorden2,
+            this.Postorden2});
             this.dataGridView1.Location = new System.Drawing.Point(38, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 258);
+            this.dataGridView1.Size = new System.Drawing.Size(744, 258);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Text = "dataGridView1";
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // NotacionesForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 307);
             this.Controls.Add(this.dataGridView1);
             this.Name = "NotacionesForm";
             this.Text = "NotacionesForm";
@@ -94,5 +108,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Preorden;
         private System.Windows.Forms.DataGridViewButtonColumn Postorden;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewButtonColumn Preorden2;
+        private System.Windows.Forms.DataGridViewButtonColumn Postorden2;
     }
 }
