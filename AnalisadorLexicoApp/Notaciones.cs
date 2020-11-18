@@ -148,17 +148,47 @@ namespace AnalizadorLexicoApp
             {
                 if (tokenActual == '*')
                 {
-                    HacerMatch('*');
-                    factor();
-                    if (Prefijo == false) mensaje += "*";
-                    termino_prima();
+                    if (Prefijo == true)
+                    {
+                        string auxi = mensaje;
+                        mensaje = "";
+                        HacerMatch('*');
+                        factor();
+                        string fact = mensaje;
+                        mensaje = "";
+                        termino_prima();
+                        string term = mensaje;
+                        mensaje = "*" + auxi + term + fact;
+                    }
+                    else
+                    {
+                        HacerMatch('*');
+                        factor();
+                        if (Prefijo == false) mensaje += "*";
+                        termino_prima();
+                    }
                 }
                 else if (tokenActual == '/')
                 {
-                    HacerMatch('/');
-                    factor();
-                    if (Prefijo == false) mensaje += "/";
-                    termino_prima();
+                    if (Prefijo == true)
+                    {
+                        string auxi = mensaje;
+                        mensaje = "";
+                        HacerMatch('/');
+                        factor();
+                        string fact = mensaje;
+                        mensaje = "";
+                        termino_prima();
+                        string term = mensaje;
+                        mensaje = "/" + auxi + term + fact;
+                    }
+                    else
+                    {
+                        HacerMatch('/');
+                        factor();
+                        if (Prefijo == false) mensaje += "/";
+                        termino_prima();
+                    }
                 }
                 else return;
             }
@@ -190,7 +220,7 @@ namespace AnalizadorLexicoApp
                         mensaje = "";
                         expresion_prima();
                         string expr = mensaje;
-                        mensaje = auxi + "+" + expr + term;
+                        mensaje = "+"+auxi + expr + term;
                     }
                     else 
                     {
@@ -213,7 +243,7 @@ namespace AnalizadorLexicoApp
                         mensaje = "";
                         expresion_prima();
                         string expr = mensaje;
-                        mensaje = auxi + "-" + expr + term;
+                        mensaje = "-" + auxi + expr + term;
                     }
                     else
                     {
